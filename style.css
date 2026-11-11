@@ -1,0 +1,215 @@
+/* ==========================================================================
+   SHUBHAM SHARMA — GAME OF THRONES CINEMATIC THEME STYLESHEET
+   Deep Black: #08090C | Dark Charcoal: #15171C | Antique Gold: #C6A15B
+   Blood Red: #8B1717  | Ice Blue: #8FC9E8      | Metallic Grey: #34373D
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --color-black: #08090C;
+  --color-charcoal: #15171C;
+  --color-surface: #12141A;
+  --color-surface-hover: #1A1D26;
+  --color-border: #282C35;
+  --color-metallic: #34373D;
+  --color-gold: #C6A15B;
+  --color-gold-light: #E5C378;
+  --color-gold-dark: #947233;
+  --color-blood: #8B1717;
+  --color-blood-light: #B32424;
+  --color-ice: #8FC9E8;
+  --color-ice-light: #BDE2F7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-black);
+  color: #E0E2E8;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Custom Medieval Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-metallic);
+  border-radius: 4px;
+  border: 1px solid rgba(198, 161, 91, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+::selection {
+  background-color: rgba(198, 161, 91, 0.3);
+  color: var(--color-gold-light);
+}
+
+/* Typography Utility Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cinzel-deco {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
+
+/* Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF0D0 0%, #E5C378 30%, #C6A15B 70%, #947233 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ice-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #BDE2F7 40%, #8FC9E8 80%, #4D8CAE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blood-gradient-text {
+  background: linear-gradient(135deg, #FF6B6B 0%, #E03131 40%, #8B1717 80%, #5C0C0C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shadows & Glows */
+.shadow-gold-glow {
+  box-shadow: 0 0 25px rgba(198, 161, 91, 0.25);
+}
+
+.shadow-gold-glow-lg {
+  box-shadow: 0 0 45px rgba(198, 161, 91, 0.45);
+}
+
+.shadow-blood-glow {
+  box-shadow: 0 0 25px rgba(139, 23, 23, 0.35);
+}
+
+.shadow-ice-glow {
+  box-shadow: 0 0 25px rgba(143, 201, 232, 0.3);
+}
+
+/* Parchment Borders */
+.parchment-border {
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.8), 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.parchment-border:hover {
+  border-color: rgba(198, 161, 91, 0.55);
+  box-shadow: inset 0 0 45px rgba(198, 161, 91, 0.05), 0 15px 45px -10px rgba(198, 161, 91, 0.25);
+}
+
+/* Gilded Corner Filigree */
+.gilded-corner-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+}
+
+.gilded-corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+}
+
+.gilded-corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+}
+
+.gilded-corner-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+}
+
+/* Valyrian Steel Blade Sheen Animation */
+.valyrian-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.valyrian-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  transform: rotate(25deg);
+  animation: valyrianSweep 7s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes valyrianSweep {
+  0% { left: -60%; }
+  35% { left: 160%; }
+  100% { left: 160%; }
+}
+
+/* Dragon Flight Keyframes */
+@keyframes dragonFly {
+  0% { transform: translateX(-120%) translateY(20px) scale(0.8); }
+  50% { transform: translateX(50vw) translateY(-40px) scale(1); }
+  100% { transform: translateX(110vw) translateY(30px) scale(0.9); }
+}
+
+.animate-dragon-fly {
+  animation: dragonFly 28s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Pulse Glow Keyframes */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Subtle Film Grain */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}

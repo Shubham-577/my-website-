@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubham Sharma | The Digital Kingdom — AI & Software Developer</title>
+  <meta name="description" content="Personal portfolio of Shubham Sharma — Aspiring AI & Software Developer, CSE Core at JECRC University, DaVinci Resolve Video Editor, and Strategic Chess Tactician." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            kingdom: {
+              black: "#08090C",
+              charcoal: "#15171C",
+              surface: "#12141A",
+              border: "#282C35",
+              gold: "#C6A15B",
+              goldLight: "#E5C378",
+              goldDark: "#947233",
+              blood: "#8B1717",
+              ice: "#8FC9E8",
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#08090C] text-[#E0E2E8] film-grain overflow-x-hidden">
+
+  <!-- Interactive Fire Embers & Snow Canvas -->
+  <canvas id="particleCanvas" class="pointer-events-none fixed inset-0 z-10 opacity-70" style="mix-blend-mode: screen;"></canvas>
+
+  <!-- =========================================================================
+       1. 7-STEP CINEMATIC INTRO EXPERIENCE
+       ========================================================================= -->
+  <div id="cinematicIntroOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-[#08090C] overflow-hidden">
+    <!-- Vignette -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(21,23,28,0.95)_0%,#08090C_85%)]"></div>
+
+    <!-- Skip Button -->
+    <button onclick="completeIntro()" class="absolute top-6 right-6 z-50 flex items-center gap-2 px-4 py-2 text-xs tracking-[0.25em] uppercase text-zinc-400 hover:text-[#C6A15B] border border-zinc-800 hover:border-[#C6A15B]/50 rounded bg-[#15171C]/80 backdrop-blur-md transition-all">
+      <span>Skip Intro</span>
+      <span>➔</span>
+    </button>
+
+    <!-- STEP 1: Sound Prompt -->
+    <div id="intro-step-1" class="relative z-20 text-center max-w-lg px-6">
+      <div class="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full border border-[#C6A15B]/40 bg-[#15171C] text-[#C6A15B] shadow-gold-glow">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <p class="text-xs uppercase tracking-[0.35em] text-[#C6A15B] mb-2 font-cinzel">The Gates of the Kingdom</p>
+      <h1 class="font-cinzel text-3xl sm:text-4xl text-zinc-100 font-bold mb-4 tracking-wider">ENTER THE REALM</h1>
+      <p class="text-zinc-400 text-sm mb-8 leading-relaxed font-sans">Prepare to witness an epic journey of Artificial Intelligence, Software Engineering, and Cinematic Storytelling.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="sound.startAtmosphere(); sound.playWarHorn(); startCinematicProgression();" class="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-[#947233] via-[#C6A15B] to-[#947233] text-black font-cinzel font-bold text-xs uppercase tracking-[0.2em] rounded shadow-gold-glow hover:brightness-110">
+          🔊 Enter with Sound
+        </button>
+        <button onclick="startCinematicProgression();" class="w-full sm:w-auto px-6 py-3.5 bg-[#15171C] border border-zinc-700 text-zinc-300 font-cinzel font-medium text-xs uppercase tracking-[0.2em] rounded hover:border-zinc-500">
+          🔇 Enter in Silence
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Dragon Silhouette & Embers -->
+    <div id="intro-step-2" class="relative z-20 text-center hidden">
+      <div class="w-64 sm:w-96 mx-auto mb-4 animate-pulse">
+        <svg viewBox="0 0 600 300" class="w-full h-auto fill-current text-zinc-700 drop-shadow-[0_0_15px_rgba(139,23,23,0.4)]">
+          <path d="M300,140 C320,120 360,90 440,70 C400,105 380,135 375,160 C420,150 490,145 540,165 C480,180 430,185 385,182 C370,210 335,245 280,260 C310,230 320,200 318,175 C280,185 240,190 190,180 C230,165 270,160 295,155 C290,130 270,105 230,85 C275,100 292,125 300,140 Z"/>
+        </svg>
+      </div>
+      <p class="text-zinc-500 font-cinzel text-xs tracking-[0.4em] uppercase">A Shadow Passes Over the Realm...</p>
+    </div>
+
+    <!-- STEP 3: "WINTER IS COMING" -->
+    <div id="intro-step-3" class="relative z-20 text-center px-4 hidden">
+      <div class="h-0.5 w-24 mx-auto mb-6 bg-gradient-to-r from-transparent via-[#8FC9E8] to-transparent"></div>
+      <h2 class="font-cinzel text-3xl sm:text-6xl font-black tracking-[0.25em] ice-gradient-text">WINTER IS COMING</h2>
+      <div class="h-0.5 w-24 mx-auto mt-6 bg-gradient-to-r from-transparent via-[#8FC9E8] to-transparent"></div>
+      <p class="mt-4 font-cinzel text-xs sm:text-sm text-[#8FC9E8]/70 tracking-[0.3em] uppercase">The Winds of Innovation Stir</p>
+    </div>
+
+    <!-- STEP 4: Medieval Emblem / Sigil -->
+    <div id="intro-step-4" class="relative z-20 text-center hidden">
+      <div class="relative w-32 h-32 mx-auto flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border border-[#C6A15B]/30 animate-spin" style="animation-duration: 18s;"></div>
+        <div class="relative w-24 h-24 flex items-center justify-center rounded-2xl bg-[#15171C] border-2 border-[#C6A15B] shadow-gold-glow-lg">
+          <span class="font-cinzel font-black text-2xl text-[#E5C378]">SS</span>
+        </div>
+      </div>
+      <p class="mt-6 font-cinzel text-xs text-[#C6A15B] tracking-[0.4em] uppercase">House of Code & Creativity</p>
+    </div>
+
+    <!-- STEP 5: "WELCOME TO MY KINGDOM" -->
+    <div id="intro-step-5" class="relative z-20 text-center px-4 hidden">
+      <p class="text-xs uppercase tracking-[0.45em] text-[#C6A15B] font-cinzel mb-3">An Epic Chronicle Awaits</p>
+      <h2 class="font-cinzel text-2xl sm:text-5xl font-extrabold tracking-[0.2em] text-white">WELCOME TO MY KINGDOM</h2>
+      <div class="w-36 h-0.5 mx-auto mt-6 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+    </div>
+
+    <!-- STEP 6: Reveal SHUBHAM SHARMA -->
+    <div id="intro-step-6" class="relative z-20 text-center px-4 max-w-2xl hidden">
+      <span class="inline-block text-[11px] uppercase tracking-[0.4em] px-3 py-1 rounded border border-[#C6A15B]/40 bg-[#15171C]/90 text-[#E5C378] font-cinzel mb-4 shadow-gold-glow">
+        Lord of the Digital Realm
+      </span>
+      <h1 class="font-cinzel text-4xl sm:text-7xl font-black tracking-[0.15em] gold-gradient-text drop-shadow-[0_0_40px_rgba(198,161,91,0.5)]">
+        SHUBHAM SHARMA
+      </h1>
+      <p class="mt-4 font-cinzel text-sm sm:text-base text-zinc-300 tracking-[0.3em] uppercase">
+        AN ASPIRING AI &amp; SOFTWARE DEVELOPER
+      </p>
+      <p class="mt-2 text-zinc-500 text-xs tracking-widest font-mono">
+        JECRC UNIVERSITY • CSE CORE • 19 YEARS OF AGE
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. FIXED NAVIGATION BAR
+       ========================================================================= -->
+  <header id="mainNavbar" class="fixed top-0 left-0 right-0 z-40 py-5 transition-all duration-300 bg-gradient-to-b from-[#08090C]/90 to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      
+      <!-- Brand Crest -->
+      <a href="#home" onclick="handleNavClick('home')" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-[#15171C] border border-[#C6A15B]/50 flex items-center justify-center shadow-gold-glow">
+          <span class="font-cinzel font-black text-xs text-[#E5C378]">SS</span>
+        </div>
+        <div class="flex flex-col text-left">
+          <span class="font-cinzel font-bold text-sm sm:text-base tracking-[0.2em] text-zinc-100 group-hover:text-[#E5C378] transition-colors">
+            SHUBHAM SHARMA
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-zinc-500 font-mono">The Digital Kingdom</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a href="#home" onclick="handleNavClick('home')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">HOME</a>
+        <a href="#story" onclick="handleNavClick('story')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">ABOUT</a>
+        <a href="#arsenal" onclick="handleNavClick('arsenal')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">SKILLS</a>
+        <a href="#victories" onclick="handleNavClick('victories')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">VICTORIES</a>
+        <a href="#battles" onclick="handleNavClick('battles')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">BATTLES</a>
+        <a href="#projects" onclick="handleNavClick('projects')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">PROJECTS</a>
+        <a href="#editing" onclick="handleNavClick('editing')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">EDITING</a>
+        <a href="#journey" onclick="handleNavClick('journey')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">JOURNEY</a>
+        <a href="#quests" onclick="handleNavClick('quests')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">QUESTS</a>
+        <a href="#contact" onclick="handleNavClick('contact')" class="px-2.5 py-1.5 text-[11px] font-cinzel font-semibold tracking-[0.2em] text-zinc-400 hover:text-[#E5C378]">CONTACT</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Sound Toggle -->
+        <button onclick="toggleSoundController()" class="px-3 py-2 rounded-lg border border-zinc-800 bg-[#15171C]/80 text-zinc-300 hover:border-[#C6A15B] text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+          <span>🔊</span>
+          <span class="sound-status-label hidden sm:inline">Sound</span>
+        </button>
+
+        <!-- Replay Intro -->
+        <button onclick="replayIntro()" title="Replay Opening" class="p-2 rounded-lg border border-zinc-800 bg-[#15171C]/80 text-zinc-400 hover:text-[#C6A15B]">
+          ↺
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg border border-zinc-800 bg-[#15171C] text-zinc-300">
+          ☰
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenuDrawer" class="hidden lg:hidden fixed inset-x-0 top-[60px] bottom-0 bg-[#08090C]/98 backdrop-blur-xl border-t border-[#C6A15B]/30 p-6 flex flex-col justify-between overflow-y-auto">
+      <div class="flex flex-col gap-2">
+        <p class="text-[10px] uppercase tracking-[0.3em] text-[#C6A15B] font-cinzel mb-2">Kingdom Navigation</p>
+        <a href="#home" onclick="handleNavClick('home')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">HOME</a>
+        <a href="#story" onclick="handleNavClick('story')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">ABOUT</a>
+        <a href="#arsenal" onclick="handleNavClick('arsenal')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">SKILLS</a>
+        <a href="#victories" onclick="handleNavClick('victories')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">VICTORIES</a>
+        <a href="#battles" onclick="handleNavClick('battles')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">BATTLES</a>
+        <a href="#projects" onclick="handleNavClick('projects')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">PROJECTS</a>
+        <a href="#editing" onclick="handleNavClick('editing')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">EDITING</a>
+        <a href="#journey" onclick="handleNavClick('journey')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">JOURNEY</a>
+        <a href="#quests" onclick="handleNavClick('quests')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">QUESTS</a>
+        <a href="#contact" onclick="handleNavClick('contact')" class="py-2.5 px-3 rounded font-cinzel text-sm text-zinc-200 hover:bg-zinc-900">CONTACT</a>
+      </div>
+      <div class="pt-6 border-t border-zinc-800 text-center">
+        <p class="font-cinzel text-xs text-[#C6A15B] tracking-widest uppercase">Shubham Sharma</p>
+        <p class="text-[11px] text-zinc-500 font-mono mt-1">B.Tech CSE Core • JECRC University</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. HERO SECTION
+       ========================================================================= -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
+    <!-- Castle Spikes Silhouette -->
+    <div class="absolute inset-x-0 bottom-0 h-64 sm:h-80 pointer-events-none opacity-25 flex items-end justify-center">
+      <svg viewBox="0 0 1440 320" class="w-full h-full fill-current text-zinc-900" preserveAspectRatio="none">
+        <path d="M0,320 L0,200 L60,180 L120,220 L180,160 L240,240 L300,170 L360,230 L420,150 L480,210 L540,140 L600,190 L660,120 L700,90 L720,60 L740,90 L780,120 L840,190 L900,140 L960,210 L1020,150 L1080,230 L1140,170 L1200,240 L1260,160 L1320,220 L1380,180 L1440,200 L1440,320 Z"/>
+      </svg>
+    </div>
+
+    <!-- Dragon Gliding in Sky -->
+    <div class="absolute top-24 left-0 w-44 sm:w-64 h-24 sm:h-32 pointer-events-none z-10 animate-dragon-fly opacity-40">
+      <svg viewBox="0 0 600 300" class="w-full h-full fill-current text-zinc-600 drop-shadow-[0_0_20px_rgba(139,23,23,0.3)]">
+        <path d="M300,140 C320,120 360,90 440,70 C400,105 380,135 375,160 C420,150 490,145 540,165 C480,180 430,185 385,182 C370,210 335,245 280,260 C310,230 320,200 318,175 C280,185 240,190 190,180 C230,165 270,160 295,155 C290,130 270,105 230,85 C275,100 292,125 300,140 Z"/>
+      </svg>
+    </div>
+
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- House Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C6A15B]/30 bg-[#15171C]/80 backdrop-blur-md mb-6 shadow-gold-glow">
+        <span class="font-cinzel text-xs text-[#E5C378] tracking-[0.25em] uppercase font-semibold">HOUSE JECRC • B.TECH CSE CORE</span>
+        <span class="text-zinc-600">•</span>
+        <span class="font-mono text-[11px] text-zinc-400">AGE 19</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.12em] gold-gradient-text drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)] mb-4">
+        SHUBHAM SHARMA
+      </h1>
+
+      <!-- Subtitle -->
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-[#C6A15B]/60 to-transparent"></div>
+        <h2 class="font-cinzel text-sm sm:text-lg md:text-xl font-bold tracking-[0.3em] uppercase text-zinc-200">
+          AN ASPIRING AI &amp; SOFTWARE DEVELOPER
+        </h2>
+        <div class="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-[#C6A15B]/60 to-transparent"></div>
+      </div>
+
+      <!-- Description -->
+      <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-zinc-300 font-sans leading-relaxed mb-10">
+        "Exploring Artificial Intelligence, building with code, and creating stories through cinematic editing."
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+        <button onclick="handleNavClick('story')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#947233] via-[#C6A15B] to-[#947233] text-black font-cinzel font-bold text-xs sm:text-sm uppercase tracking-[0.22em] rounded shadow-gold-glow hover:scale-105 transition-all valyrian-sheen">
+          EXPLORE MY KINGDOM
+        </button>
+        <button onclick="handleNavClick('contact')" class="w-full sm:w-auto px-8 py-4 bg-[#15171C]/90 hover:bg-[#1C2029] border border-[#C6A15B]/40 text-zinc-100 font-cinzel font-bold text-xs sm:text-sm uppercase tracking-[0.22em] rounded transition-all hover:border-[#C6A15B]">
+          CONTACT ME
+        </button>
+      </div>
+
+      <!-- Triple Identity -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-16 text-left">
+        <div class="p-3 rounded-lg bg-[#15171C]/50 border border-zinc-800">
+          <span class="text-[10px] uppercase font-cinzel text-[#C6A15B] tracking-wider block">The Mind</span>
+          <p class="text-xs text-zinc-300 font-medium mt-0.5">AI &amp; Software Developer</p>
+        </div>
+        <div class="p-3 rounded-lg bg-[#15171C]/50 border border-zinc-800">
+          <span class="text-[10px] uppercase font-cinzel text-[#8FC9E8] tracking-wider block">The Eye</span>
+          <p class="text-xs text-zinc-300 font-medium mt-0.5">DaVinci Video Editor</p>
+        </div>
+        <div class="p-3 rounded-lg bg-[#15171C]/50 border border-zinc-800">
+          <span class="text-[10px] uppercase font-cinzel text-[#8B1717] tracking-wider block">The Strategy</span>
+          <p class="text-xs text-zinc-300 font-medium mt-0.5">Chess Player &amp; Tactician</p>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div onclick="handleNavClick('story')" class="inline-flex flex-col items-center gap-2 cursor-pointer text-zinc-500 hover:text-[#C6A15B] transition-colors">
+        <span class="font-cinzel text-[11px] uppercase tracking-[0.3em] font-semibold">SCROLL TO DISCOVER MY STORY</span>
+        <div class="w-7 h-11 rounded-full border border-zinc-700 flex items-start justify-center p-1.5">
+          <div class="w-1.5 h-2.5 bg-[#C6A15B] rounded-full animate-bounce"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. ABOUT SECTION ("THE STORY BEGINS")
+       ========================================================================= -->
+  <section id="story" class="relative py-28 bg-[#08090C] overflow-hidden">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Prologue</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">THE STORY BEGINS</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Curiosity • Consistency • Creativity • Courage</p>
+      </div>
+
+      <div class="relative p-6 sm:p-10 md:p-12 rounded-xl bg-[#12141A] parchment-border">
+        <div class="gilded-corner-tl"></div>
+        <div class="gilded-corner-tr"></div>
+        <div class="gilded-corner-bl"></div>
+        <div class="gilded-corner-br"></div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 pb-8 border-b border-[#282C35]">
+          <div class="p-3 rounded bg-[#15171C] border border-zinc-800 text-center">
+            <span class="text-[10px] uppercase font-cinzel text-zinc-400 tracking-wider block">Age</span>
+            <span class="font-cinzel text-xl sm:text-2xl font-bold text-[#E5C378]">19 Years</span>
+          </div>
+          <div class="p-3 rounded bg-[#15171C] border border-zinc-800 text-center">
+            <span class="text-[10px] uppercase font-cinzel text-zinc-400 tracking-wider block">Degree</span>
+            <span class="font-cinzel text-sm sm:text-base font-bold text-zinc-100">B.Tech CSE</span>
+          </div>
+          <div class="p-3 rounded bg-[#15171C] border border-zinc-800 text-center">
+            <span class="text-[10px] uppercase font-cinzel text-zinc-400 tracking-wider block">University</span>
+            <span class="font-cinzel text-sm sm:text-base font-bold text-zinc-100">JECRC</span>
+          </div>
+          <div class="p-3 rounded bg-[#15171C] border border-zinc-800 text-center">
+            <span class="text-[10px] uppercase font-cinzel text-zinc-400 tracking-wider block">Academic Status</span>
+            <span class="font-cinzel text-xs sm:text-sm font-bold text-[#8FC9E8]">1st Year, 1st Sem</span>
+          </div>
+        </div>
+
+        <!-- Full Bio -->
+        <div class="space-y-6 text-zinc-300 font-sans text-sm sm:text-base leading-relaxed md:leading-8">
+          <p>
+            <span class="float-left text-4xl sm:text-5xl font-cinzel font-black text-[#C6A15B] pr-3 pt-1 leading-none">I</span>
+            am <strong class="text-white font-semibold">Shubham Sharma</strong>, a 19-year-old Computer Science and Engineering student at <strong class="text-[#E5C378]">JECRC University</strong>. I completed my Class 10th with <strong class="text-[#E5C378]">90%</strong> and Class 12th with <strong class="text-[#E5C378]">85%</strong>. Currently pursuing my B.Tech in CSE Core, I am actively exploring the world of technology and participating in university-level technical activities.
+          </p>
+          <p>
+            My primary ambition is to become an <strong class="text-white">AI and Software Developer</strong>. I enjoy learning programming, understanding how technology works, solving problems, and transforming creative ideas into practical projects.
+          </p>
+          <p>
+            Beyond coding, I have a strong interest in <strong class="text-white">professional video editing and cinematic storytelling</strong>. I am continuously developing my editing skills and experimenting with visual effects, transitions, color grading, and storytelling using <strong class="text-[#8FC9E8]">DaVinci Resolve</strong>.
+          </p>
+          <p>
+            I also enjoy watching movies and TV series and playing chess.
+          </p>
+          <div class="p-5 my-6 rounded-lg bg-[#15171C] border-l-4 border-[#C6A15B] italic text-zinc-200 font-cinzel text-sm sm:text-base">
+            "I believe that every great journey begins with curiosity, consistency, creativity, and the courage to build something extraordinary."
+          </div>
+        </div>
+
+        <!-- 4 Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-[#282C35]">
+          <div class="p-4 rounded-lg bg-[#15171C]/80 border border-zinc-800 text-left">
+            <h4 class="font-cinzel text-xs font-bold text-[#E5C378] tracking-wider uppercase">AI Developer</h4>
+            <p class="text-[11px] text-zinc-400 mt-1">Exploring intelligence, algorithms, and future cognition.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-[#15171C]/80 border border-zinc-800 text-left">
+            <h4 class="font-cinzel text-xs font-bold text-[#8FC9E8] tracking-wider uppercase">Software Builder</h4>
+            <p class="text-[11px] text-zinc-400 mt-1">Transforming abstract concepts into functional software.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-[#15171C]/80 border border-zinc-800 text-left">
+            <h4 class="font-cinzel text-xs font-bold text-[#FF6B6B] tracking-wider uppercase">Video Editor</h4>
+            <p class="text-[11px] text-zinc-400 mt-1">DaVinci Resolve workflows, pacing, and color grading.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-[#15171C]/80 border border-zinc-800 text-left">
+            <h4 class="font-cinzel text-xs font-bold text-[#E5C378] tracking-wider uppercase">Chess Tactician</h4>
+            <p class="text-[11px] text-zinc-400 mt-1">Strategic discipline, planning moves, and foresight.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. SKILLS SECTION ("MY ARSENAL")
+       ========================================================================= -->
+  <section id="arsenal" class="relative py-28 bg-[#0B0D11] overflow-hidden">
+    <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Weapons &amp; Capabilities</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">MY ARSENAL</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Forged in curiosity • Sharpened through continuous practice</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- A. PROGRAMMING -->
+        <div class="relative p-6 rounded-2xl bg-[#14161E] border border-zinc-800 hover:border-[#C6A15B] transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="text-[10px] uppercase font-mono text-[#E5C378]">Category A</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-4">PROGRAMMING</h3>
+          <ul class="space-y-3 text-xs text-zinc-300 font-sans">
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Programming Languages</strong>
+              <span class="text-zinc-400 text-[11px]">Core syntax, algorithmic logic (C, C++, Python, Web foundations)</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Coding Fundamentals</strong>
+              <span class="text-zinc-400 text-[11px]">Writing clean, modular, and maintainable logic</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Problem-Solving</strong>
+              <span class="text-zinc-400 text-[11px]">Analytical approach to debugging &amp; runtime optimization</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- B. ARTIFICIAL INTELLIGENCE -->
+        <div class="relative p-6 rounded-2xl bg-[#14161E] border border-zinc-800 hover:border-[#8B1717] transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="text-[10px] uppercase font-mono text-[#FF8585]">Category B</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-4">ARTIFICIAL INTELLIGENCE</h3>
+          <ul class="space-y-3 text-xs text-zinc-300 font-sans">
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">AI Concepts</strong>
+              <span class="text-zinc-400 text-[11px]">Foundational machine intelligence &amp; knowledge reasoning</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Machine Learning Exploration</strong>
+              <span class="text-zinc-400 text-[11px]">Studying model dynamics and mathematical foundations</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">AI Tools &amp; Technologies</strong>
+              <span class="text-zinc-400 text-[11px]">Leveraging modern AI developer assistants &amp; prompt engineering</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- C. SOFTWARE DEVELOPMENT -->
+        <div class="relative p-6 rounded-2xl bg-[#14161E] border border-zinc-800 hover:border-[#8FC9E8] transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="text-[10px] uppercase font-mono text-[#8FC9E8]">Category C</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-4">SOFTWARE DEVELOPMENT</h3>
+          <ul class="space-y-3 text-xs text-zinc-300 font-sans">
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Development Fundamentals</strong>
+              <span class="text-zinc-400 text-[11px]">Mastering clean architecture &amp; version control (Git)</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Project Building</strong>
+              <span class="text-zinc-400 text-[11px]">Synthesizing ideas into functioning digital deployments</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Logical Thinking</strong>
+              <span class="text-zinc-400 text-[11px]">Deconstructing complex computational problems</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- D. VIDEO EDITING -->
+        <div class="relative p-6 rounded-2xl bg-[#14161E] border border-zinc-800 hover:border-[#C6A15B] transition-all md:col-span-2">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="text-[10px] uppercase font-mono text-[#E5C378]">Category D</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-4">VIDEO EDITING (DAVINCI RESOLVE)</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">DaVinci Resolve</strong>
+              <span class="text-zinc-400 text-[11px]">Primary suite for cutting, media &amp; Fairlight audio</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">Cinematic Editing</strong>
+              <span class="text-zinc-400 text-[11px]">Pacing, narrative rhythm &amp; dramatic tension</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">Transitions &amp; Effects</strong>
+              <span class="text-zinc-400 text-[11px]">Match cuts, speed ramping &amp; smooth flow</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">Color Grading</strong>
+              <span class="text-zinc-400 text-[11px]">Color wheels, curves &amp; film LUT emulations</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">Sound Design</strong>
+              <span class="text-zinc-400 text-[11px]">Atmospheric soundscapes &amp; impact foley</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel text-xs">Visual Storytelling</strong>
+              <span class="text-zinc-400 text-[11px]">Framing, camera blocking &amp; subtext</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- E. CREATIVE THINKING -->
+        <div class="relative p-6 rounded-2xl bg-[#14161E] border border-zinc-800 hover:border-zinc-500 transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="text-[10px] uppercase font-mono text-zinc-400">Category E</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-4">CREATIVE THINKING</h3>
+          <ul class="space-y-3 text-xs text-zinc-300 font-sans">
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Creativity</strong>
+              <span class="text-zinc-400 text-[11px]">Fusing medieval aesthetics with modern code</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Strategic Thinking</strong>
+              <span class="text-zinc-400 text-[11px]">Calculating moves ahead in code and chess</span>
+            </li>
+            <li class="p-2.5 rounded bg-[#181B24] border border-zinc-800">
+              <strong class="text-white block font-cinzel">Experimentation</strong>
+              <span class="text-zinc-400 text-[11px]">Embracing curiosity &amp; exploring new tech</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. ACHIEVEMENTS SECTION ("MY VICTORIES")
+       ========================================================================= -->
+  <section id="victories" class="relative py-28 bg-[#08090C] overflow-hidden">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Academic Honors</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">MY VICTORIES</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Proof of discipline, analytical rigor, and academic excellence</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Class 10th Card -->
+        <div class="relative p-8 sm:p-10 rounded-2xl bg-[#14161E] border border-[#C6A15B]/40 shadow-gold-glow">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div class="flex items-center justify-between mb-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#8B1717] to-[#450A0A] border-2 border-[#C6A15B] flex items-center justify-center font-cinzel font-black text-2xl text-[#E5C378]">
+              X
+            </div>
+            <span class="px-3.5 py-1.5 rounded-full border border-[#C6A15B]/50 bg-[#1A1D24] font-cinzel text-xs text-[#E5C378] tracking-[0.2em] uppercase font-semibold">
+              Exemplary Distinction
+            </span>
+          </div>
+          <span class="font-cinzel text-xs uppercase tracking-[0.3em] text-zinc-400 block mb-1">Class 10th Board Examination</span>
+          <div class="flex items-baseline gap-2 mb-4">
+            <span id="counter-10th" class="font-cinzel text-6xl sm:text-7xl font-black gold-gradient-text">90%</span>
+            <span class="text-zinc-500 font-mono text-sm tracking-wider uppercase">Aggregate</span>
+          </div>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            Achieved 90% aggregate score through discipline, analytical focus, and relentless consistency in foundational subjects.
+          </p>
+          <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400 font-mono">
+            <span>Secondary School Education</span>
+            <span class="text-[#E5C378] uppercase font-cinzel">Verified Merit</span>
+          </div>
+        </div>
+
+        <!-- Class 12th Card -->
+        <div class="relative p-8 sm:p-10 rounded-2xl bg-[#14161E] border border-[#C6A15B]/40 shadow-gold-glow">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div class="flex items-center justify-between mb-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#8B1717] to-[#450A0A] border-2 border-[#C6A15B] flex items-center justify-center font-cinzel font-black text-2xl text-[#E5C378]">
+              XII
+            </div>
+            <span class="px-3.5 py-1.5 rounded-full border border-[#C6A15B]/50 bg-[#1A1D24] font-cinzel text-xs text-[#E5C378] tracking-[0.2em] uppercase font-semibold">
+              High Academic Standing
+            </span>
+          </div>
+          <span class="font-cinzel text-xs uppercase tracking-[0.3em] text-zinc-400 block mb-1">Class 12th Senior Secondary</span>
+          <div class="flex items-baseline gap-2 mb-4">
+            <span id="counter-12th" class="font-cinzel text-6xl sm:text-7xl font-black gold-gradient-text">85%</span>
+            <span class="text-zinc-500 font-mono text-sm tracking-wider uppercase">Aggregate</span>
+          </div>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            Earned 85% aggregate score with deep emphasis on science, mathematics, and logical reasoning, paving the way for CSE Core.
+          </p>
+          <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400 font-mono">
+            <span>Senior Secondary Education</span>
+            <span class="text-[#E5C378] uppercase font-cinzel">Verified Merit</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. UNIVERSITY BATTLES ("THE BATTLES OF KNOWLEDGE")
+       ========================================================================= -->
+  <section id="battles" class="relative py-28 bg-[#0B0D11] overflow-hidden">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">University Arenas</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">THE BATTLES OF KNOWLEDGE</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Trials of intellect, algorithmic stamina, and collaborative innovation at JECRC University</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- CodeHunt -->
+        <div class="relative p-8 rounded-2xl bg-[#13161F] border border-zinc-800 hover:border-[#8FC9E8]/70 shadow-xl transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div class="flex items-center justify-between mb-4 pb-4 border-b border-zinc-800">
+            <div>
+              <span class="text-[10px] uppercase font-cinzel text-[#C6A15B] tracking-wider block">JECRC University</span>
+              <h3 class="font-cinzel text-2xl font-bold text-white tracking-wider">CODEHUNT</h3>
+            </div>
+            <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded bg-[#181B24] border border-zinc-800 text-zinc-400">Active Participant</span>
+          </div>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            "Participated in CodeHunt at JECRC University, exploring competitive coding and problem-solving challenges."
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Algorithmic Thinking</span>
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Logic Building</span>
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Time-Bound Coding</span>
+          </div>
+          <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-500 font-mono">
+            <span>Competitive Coding Arena</span>
+            <span class="text-[#C6A15B] font-cinzel">Valyrian Trial</span>
+          </div>
+        </div>
+
+        <!-- Hackathons -->
+        <div class="relative p-8 rounded-2xl bg-[#13161F] border border-zinc-800 hover:border-[#8B1717]/70 shadow-xl transition-all">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div class="flex items-center justify-between mb-4 pb-4 border-b border-zinc-800">
+            <div>
+              <span class="text-[10px] uppercase font-cinzel text-[#C6A15B] tracking-wider block">JECRC University</span>
+              <h3 class="font-cinzel text-2xl font-bold text-white tracking-wider">HACKATHONS</h3>
+            </div>
+            <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded bg-[#181B24] border border-zinc-800 text-zinc-400">Active Participant</span>
+          </div>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            "Participated in hackathons at JECRC University, exploring innovation, collaboration, and practical problem-solving."
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Collaborative Ideation</span>
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Rapid Prototyping</span>
+            <span class="px-2.5 py-1 rounded bg-[#191C26] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Practical Engineering</span>
+          </div>
+          <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-500 font-mono">
+            <span>Software Ideation Arena</span>
+            <span class="text-[#FF6B6B] font-cinzel">Siege of Innovation</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. PROJECTS SECTION ("MY BATTLES AND CREATIONS")
+       ========================================================================= -->
+  <section id="projects" class="relative py-28 bg-[#08090C] overflow-hidden">
+    <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">The Forge of Creation</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">MY BATTLES AND CREATIONS</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        
+        <div class="mt-6 max-w-2xl mx-auto p-4 rounded-xl bg-[#14161E] border border-[#C6A15B]/40 shadow-gold-glow">
+          <p class="font-cinzel text-sm sm:text-base font-bold text-[#E5C378] tracking-[0.18em] uppercase">
+            "EVERY GREAT CREATION BEGINS WITH AN IDEA. MORE PROJECTS ARE COMING."
+          </p>
+          <p class="text-xs text-zinc-400 font-sans mt-1">Currently engineering software and video editing explorations during my B.Tech CSE First Year.</p>
+        </div>
+      </div>
+
+      <!-- Filters & Forge Button -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-zinc-800">
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-filter="all" onclick="filterProjects('all')" class="project-filter-btn px-4 py-2 rounded-lg font-cinzel text-xs font-semibold tracking-wider bg-[#C6A15B] text-black shadow-gold-glow">ALL CREATIONS</button>
+          <button data-filter="forge" onclick="filterProjects('forge')" class="project-filter-btn px-4 py-2 rounded-lg font-cinzel text-xs font-semibold tracking-wider bg-[#15171C] text-zinc-400 hover:text-white border border-zinc-800">IN THE FORGE (ACTIVE)</button>
+          <button data-filter="ai" onclick="filterProjects('ai')" class="project-filter-btn px-4 py-2 rounded-lg font-cinzel text-xs font-semibold tracking-wider bg-[#15171C] text-zinc-400 hover:text-white border border-zinc-800">AI &amp; SOFTWARE</button>
+          <button data-filter="video" onclick="filterProjects('video')" class="project-filter-btn px-4 py-2 rounded-lg font-cinzel text-xs font-semibold tracking-wider bg-[#15171C] text-zinc-400 hover:text-white border border-zinc-800">VIDEO EDITING</button>
+        </div>
+
+        <button onclick="openForgeModal()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#15171C] border border-[#C6A15B]/40 hover:border-[#C6A15B] text-[#E5C378] font-cinzel text-xs tracking-wider transition-all">
+          <span>+</span>
+          <span>FORGE NEW CREATION</span>
+        </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Project 1: AI Knowledge Companion -->
+        <div class="project-card relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-[#13161F] border border-zinc-800 hover:border-[#C6A15B]/60 shadow-xl transition-all" data-category="AI & Software" data-forge="true">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-cinzel text-[11px] uppercase tracking-wider text-[#C6A15B]">AI &amp; Software Development</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase bg-[#8B1717]/20 border border-[#8B1717]/50 text-[#FF8585]">In The Royal Forge</span>
+            </div>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-2">Intelligent AI Knowledge Companion</h3>
+            <p class="font-mono text-xs text-zinc-400 mb-4">Active Exploration &amp; Development</p>
+            <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+              An exploratory AI-powered interactive knowledge tool designed to assist computer science students with conceptual breakdowns, algorithmic walkthroughs, and code comprehension.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Artificial Intelligence</span>
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Python / Web APIs</span>
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Prompt Logic</span>
+            </div>
+            <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+              <a href="https://github.com/shubhamsharma572007" target="_blank" class="flex-1 text-center py-2.5 rounded bg-[#181B24] border border-zinc-700 text-xs font-cinzel text-zinc-200 hover:text-[#E5C378]">Code Repository</a>
+              <a href="#projects" class="flex-1 text-center py-2.5 rounded bg-gradient-to-r from-[#947233] to-[#C6A15B] text-black text-xs font-cinzel font-bold">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: DaVinci Resolve Showreel -->
+        <div class="project-card relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-[#13161F] border border-zinc-800 hover:border-[#C6A15B]/60 shadow-xl transition-all" data-category="Cinematic Video Editing" data-forge="true">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-cinzel text-[11px] uppercase tracking-wider text-[#C6A15B]">Cinematic Video Editing</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase bg-[#8B1717]/20 border border-[#8B1717]/50 text-[#FF8585]">In The Editing Suite</span>
+            </div>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-2">Cinematic DaVinci Resolve Showreel</h3>
+            <p class="font-mono text-xs text-zinc-400 mb-4">Color Grading &amp; Montage</p>
+            <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+              A showcase of cinematic video editing techniques using DaVinci Resolve, focusing on moody dark fantasy color grading, sound design, rhythm-based cuts, and atmospheric light leaks.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">DaVinci Resolve</span>
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Color Wheels</span>
+              <span class="px-2.5 py-1 rounded bg-[#1A1D27] border border-zinc-800 text-[11px] text-zinc-300 font-mono">Fairlight Audio</span>
+            </div>
+            <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+              <a href="https://github.com/shubhamsharma572007" target="_blank" class="flex-1 text-center py-2.5 rounded bg-[#181B24] border border-zinc-700 text-xs font-cinzel text-zinc-200 hover:text-[#E5C378]">Editing Notes</a>
+              <a href="#editing" class="flex-1 text-center py-2.5 rounded bg-gradient-to-r from-[#947233] to-[#C6A15B] text-black text-xs font-cinzel font-bold">View Suite</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. VIDEO EDITING SECTION ("THE ART OF VISUAL STORYTELLING")
+       ========================================================================= -->
+  <section id="editing" class="relative py-28 bg-[#07080A] overflow-hidden">
+    <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#8FC9E8]/30 bg-[#15171C] text-[#8FC9E8] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">DaVinci Resolve Editing Suite</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">THE ART OF VISUAL STORYTELLING</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Color Grading • Narrative Pacing • Cinematic Atmosphere • DaVinci Resolve</p>
+      </div>
+
+      <!-- 35mm Film Strip -->
+      <div class="relative mb-14 overflow-hidden rounded-xl bg-[#0F1116] border border-zinc-800 py-3">
+        <div class="flex justify-between px-2 mb-2 opacity-50">
+          <div class="flex gap-2">
+            <span class="w-3.5 h-2 rounded-sm bg-zinc-700 inline-block"></span>
+            <span class="w-3.5 h-2 rounded-sm bg-zinc-700 inline-block"></span>
+            <span class="w-3.5 h-2 rounded-sm bg-zinc-700 inline-block"></span>
+            <span class="w-3.5 h-2 rounded-sm bg-zinc-700 inline-block"></span>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-500">35MM FILM REEL</span>
+        </div>
+        <div class="flex items-center gap-4 px-4 overflow-x-auto py-1">
+          <div class="min-w-[220px] h-32 rounded-lg bg-[#151821] border border-zinc-800 p-3 flex flex-col justify-between">
+            <span class="text-[10px] font-mono text-[#C6A15B]">FRAME 01 • 00:00:14:02</span>
+            <h4 class="font-cinzel text-xs font-bold text-zinc-200">Dark Castle Battlement</h4>
+            <span class="text-[9px] text-zinc-500 font-mono">Moody Cold • 24 FPS</span>
+          </div>
+          <div class="min-w-[220px] h-32 rounded-lg bg-[#151821] border border-zinc-800 p-3 flex flex-col justify-between">
+            <span class="text-[10px] font-mono text-[#C6A15B]">FRAME 02 • 00:00:32:19</span>
+            <h4 class="font-cinzel text-xs font-bold text-zinc-200">Dragonfire Embers Glow</h4>
+            <span class="text-[9px] text-zinc-500 font-mono">Amber Flame • 24 FPS</span>
+          </div>
+          <div class="min-w-[220px] h-32 rounded-lg bg-[#151821] border border-zinc-800 p-3 flex flex-col justify-between">
+            <span class="text-[10px] font-mono text-[#C6A15B]">FRAME 03 • 00:00:58:08</span>
+            <h4 class="font-cinzel text-xs font-bold text-zinc-200">The Obsidian Throne</h4>
+            <span class="text-[9px] text-zinc-500 font-mono">Deep Shadow • 24 FPS</span>
+          </div>
+          <div class="min-w-[220px] h-32 rounded-lg bg-[#151821] border border-zinc-800 p-3 flex flex-col justify-between">
+            <span class="text-[10px] font-mono text-[#C6A15B]">FRAME 04 • 00:01:12:21</span>
+            <h4 class="font-cinzel text-xs font-bold text-zinc-200">Valyrian Steel Reflection</h4>
+            <span class="text-[9px] text-zinc-500 font-mono">Silver Tone • 24 FPS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DaVinci Timeline & Color Grading -->
+      <div class="relative rounded-2xl bg-[#111319] border border-[#C6A15B]/30 shadow-2xl p-6 sm:p-8 mb-16">
+        <div class="gilded-corner-tl"></div>
+        <div class="gilded-corner-tr"></div>
+        <div class="gilded-corner-bl"></div>
+        <div class="gilded-corner-br"></div>
+
+        <div class="flex items-center justify-between pb-4 mb-6 border-b border-zinc-800 text-xs font-mono">
+          <span class="font-cinzel text-sm font-bold text-zinc-200">DAVINCI RESOLVE STUDIO • TIMELINE VIEW</span>
+          <span class="text-[#C6A15B] font-bold">TIMECODE: 00:01:24:18</span>
+        </div>
+
+        <!-- Before / After Slider -->
+        <div class="relative mb-6">
+          <div id="colorGradingViewer" class="relative h-64 sm:h-80 rounded-xl overflow-hidden border border-zinc-800 select-none bg-black cursor-ew-resize">
+            <!-- Graded Layer -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-tr from-[#08090C] via-[#1F1710] to-[#2B1B0F]">
+              <h3 class="font-cinzel text-2xl sm:text-4xl font-black gold-gradient-text tracking-[0.2em]">CINEMATIC COLOR GRADE</h3>
+              <p class="text-xs text-zinc-300 mt-2">Rich shadow contrast, golden highlight roll-off, and cinematic mood.</p>
+            </div>
+            <!-- Flat Layer -->
+            <div id="flatLogLayer" class="absolute inset-y-0 left-0 overflow-hidden bg-zinc-800" style="width: 50%;">
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-zinc-700" style="min-width: 900px; filter: grayscale(50%) contrast(75%);">
+                <h3 class="font-cinzel text-2xl sm:text-4xl font-black text-zinc-200 tracking-[0.2em]">FLAT LOG / UNGRADED</h3>
+                <p class="text-xs text-zinc-300 mt-2">Desaturated raw sensor data ready for DaVinci primary wheels.</p>
+              </div>
+            </div>
+            <!-- Divider -->
+            <div id="colorGradeDivider" class="absolute top-0 bottom-0 w-0.5 bg-[#C6A15B] shadow-gold-glow z-20" style="left: 50%;">
+              <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#15171C] border border-[#C6A15B] flex items-center justify-center text-[9px] text-[#E5C378] font-bold">VS</div>
+            </div>
+          </div>
+          <p class="text-center text-[11px] text-zinc-500 font-mono mt-2">Drag mouse/touch across viewer to compare RAW Log footage vs. Finished Cinematic Color Grade</p>
+        </div>
+
+        <!-- Interactive Tracks -->
+        <div class="space-y-2 bg-[#0C0E14] p-4 rounded-xl border border-zinc-800/90 relative">
+          <div id="timelinePlayhead" class="absolute top-0 bottom-0 w-0.5 bg-red-500 z-30 transition-all pointer-events-none" style="left: 35%;">
+            <div class="absolute -top-1 -translate-x-1/2 w-3 h-3 bg-red-500 rotate-45"></div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-8 text-[10px] font-mono text-zinc-400 font-bold">V2</span>
+            <div class="flex-1 h-7 rounded bg-[#181B24] border border-zinc-800 px-3 text-[10px] text-[#8FC9E8] flex items-center">Titles &amp; Film Grain Overlay</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-8 text-[10px] font-mono text-[#E5C378] font-bold">V1</span>
+            <div class="flex-1 h-9 rounded bg-[#1C202B] border border-[#C6A15B]/40 px-3 text-[11px] text-zinc-100 font-cinzel flex items-center">Main Sequence: Fortress Gate ➔ Valyrian Blade ➔ The Throne</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-8 text-[10px] font-mono text-emerald-400 font-bold">A1</span>
+            <div class="flex-1 h-7 rounded bg-[#16221C] border border-emerald-900/40 px-3 text-[10px] text-emerald-400 flex items-center">Audio Foley &amp; Sword Ring Sound FX</div>
+          </div>
+        </div>
+
+        <!-- Transport Controls -->
+        <div class="flex items-center justify-between pt-4 mt-4 border-t border-zinc-800">
+          <div class="flex items-center gap-3">
+            <button id="timelinePlayBtn" onclick="toggleTimelinePlay()" class="px-5 py-2.5 rounded bg-[#C6A15B] text-black font-cinzel font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-gold-glow">
+              <span>SCRUB TIMELINE</span>
+            </button>
+            <button onclick="resetTimeline()" class="px-3 py-2 rounded bg-[#181B24] border border-zinc-700 text-xs text-zinc-300 font-cinzel">RESET</button>
+          </div>
+          <span class="text-xs font-mono text-zinc-500">DaVinci Resolve 19 Workflow</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. BEYOND THE BATTLEFIELD (HOBBIES & CHESS)
+       ========================================================================= -->
+  <section id="hobbies" class="relative py-28 bg-[#08090C] overflow-hidden">
+    <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Passions &amp; Pursuit of Excellence</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">BEYOND THE BATTLEFIELD</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Stories • Strategy • Technological Exploration</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: MOVIES -->
+        <div class="relative p-7 sm:p-8 rounded-2xl bg-[#12141C] border border-zinc-800">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">MOVIES &amp; TV SERIES</h3>
+          <p class="font-mono text-xs text-[#E5C378] mb-4">Stories, Characters, Cinematography &amp; Worlds</p>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            "I enjoy watching movies and TV series, exploring different stories, characters, cinematography, and creative worlds."
+          </p>
+          <div class="p-4 rounded-xl bg-[#0B0D11] border border-zinc-800 text-xs font-mono space-y-2 text-zinc-400">
+            <div>SCENE: DARK FANTASY • TAKE: 01</div>
+            <div>GENRES: EPIC DRAMA, SCI-FI, THRILLER</div>
+            <div class="text-zinc-500 italic text-[11px] pt-2 border-t border-zinc-800">Analyzing visual tension and framing directly inspires my video editing craft.</div>
+          </div>
+        </div>
+
+        <!-- CARD 2: CHESS (PLAYABLE OBSIDIAN & GOLD BOARD) -->
+        <div class="relative p-7 sm:p-8 rounded-2xl bg-[#12141C] border border-[#C6A15B]/50 shadow-gold-glow">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">CHESS</h3>
+          <p class="font-mono text-xs text-[#E5C378] mb-3">Strategic Thinking &amp; Tactical Discipline</p>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-4">
+            "Chess is one of my favourite hobbies. I enjoy strategic thinking, planning moves, and challenging my mind."
+          </p>
+
+          <!-- 8x8 Board -->
+          <div class="p-2 rounded-xl bg-[#090A0E] border border-zinc-800 mb-3 shadow-inner">
+            <div id="chessBoardGrid" class="grid grid-cols-8 gap-0.5 rounded overflow-hidden border border-[#C6A15B]/30 aspect-square max-w-[270px] mx-auto"></div>
+          </div>
+
+          <!-- Move Commentary -->
+          <div class="p-2.5 rounded bg-[#0D0E14] border border-zinc-800 text-[11px] font-mono text-zinc-300 mb-3">
+            <div id="chessMoveTitle" class="text-[#C6A15B] font-bold mb-1">1. e4 e5 (Step 1/5)</div>
+            <p id="chessMoveDesc" class="text-zinc-400">Open Game: Seizing central dominion with pawn structure.</p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="advanceTacticalMove()" class="flex-1 py-1.5 px-3 rounded bg-[#C6A15B] text-black font-cinzel font-bold text-[11px] uppercase tracking-wider">Next Move</button>
+            <button onclick="resetChessboard()" class="p-1.5 rounded bg-[#181B24] border border-zinc-700 text-zinc-300 text-xs">Reset</button>
+          </div>
+        </div>
+
+        <!-- CARD 3: TECHNOLOGY -->
+        <div class="relative p-7 sm:p-8 rounded-2xl bg-[#12141C] border border-zinc-800">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">TECHNOLOGY &amp; CREATIVITY</h3>
+          <p class="font-mono text-xs text-[#8FC9E8] mb-4">Continuous Exploration &amp; Experimentation</p>
+          <p class="text-sm text-zinc-300 font-sans leading-relaxed mb-6">
+            "I enjoy exploring technology, experimenting with new ideas, and continuously learning new skills."
+          </p>
+          <div class="p-5 rounded-xl bg-[#0B0D11] border border-zinc-800 text-center">
+            <span class="font-cinzel text-xs font-bold text-zinc-200 uppercase tracking-wider block">Alchemical Tech Sigil</span>
+            <p class="text-[11px] text-zinc-400 font-mono mt-1">Merging medieval fantasy aesthetics with cutting-edge software development.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. TIMELINE SECTION ("THE JOURNEY HAS JUST BEGUN")
+       ========================================================================= -->
+  <section id="journey" class="relative py-28 bg-[#0B0D11] overflow-hidden">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Chronicles of the Realm</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">THE JOURNEY HAS JUST BEGUN</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">A Medieval Journey Map from Foundations to the Throne of AI</p>
+      </div>
+
+      <div class="relative">
+        <div class="absolute top-0 bottom-0 left-6 sm:left-1/2 -translate-x-1/2 w-0.5 bg-gradient-to-b from-[#C6A15B]/20 via-[#C6A15B] to-[#8B1717] shadow-gold-glow"></div>
+
+        <div class="space-y-8">
+          <!-- 10 Milestones -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-zinc-800">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#C6A15B]">Milestone I</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Class 10th Academic Triumph (90%)</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">Completed secondary school examinations with 90% aggregate score.</p>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center sm:flex-row-reverse pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-zinc-800">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#C6A15B]">Milestone II</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Class 12th Senior Secondary (85%)</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">Graduated higher secondary with 85% aggregate, sharpening focus in mathematics and physics.</p>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-[#8FC9E8]/40">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#8FC9E8]">Milestone III</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Started B.Tech CSE Core at JECRC University</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">First Year, First Semester: Exploring computer science fundamentals.</p>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center sm:flex-row-reverse pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-zinc-800">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#C6A15B]">Milestone IV</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Participated in CodeHunt at JECRC</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">Tackled competitive coding challenges and problem-solving scenarios.</p>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-zinc-800">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#C6A15B]">Milestone V</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Participated in University Hackathons</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">Experienced collaborative software ideation and practical problem-solving.</p>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center sm:flex-row-reverse pl-14 sm:pl-0">
+            <div class="w-full sm:w-[calc(50%-44px)] p-6 rounded-2xl bg-[#14161E] border border-[#C6A15B]/50 shadow-gold-glow">
+              <span class="font-cinzel text-[10px] uppercase tracking-wider text-[#E5C378]">Milestone X (Throne)</span>
+              <h3 class="font-cinzel text-base font-bold text-white">Future Ambition: AI &amp; Software Developer</h3>
+              <p class="text-xs text-zinc-300 font-sans mt-2">Forging knowledge, creativity, and strategy to build world-class intelligent technology.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. QUESTS SECTION ("FORGING MY FUTURE")
+       ========================================================================= -->
+  <section id="quests" class="relative py-28 bg-[#08090C] overflow-hidden">
+    <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Active Guild Quests</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">FORGING MY FUTURE</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Current focuses underway in Shubham's kingdom</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Quest 1 -->
+        <div class="relative p-8 rounded-2xl bg-[#12141C] border border-zinc-800">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block mb-1">Software Architecture</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">QUEST 1: THE PATH OF CODE</h3>
+          <p class="font-cinzel text-xs text-[#E5C378] italic mb-6">"Sharpening the blades of logic"</p>
+          <ul class="space-y-2 text-xs text-zinc-300">
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Learning programming</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Improving coding abilities</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Practicing problem-solving</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Building software projects</li>
+          </ul>
+        </div>
+
+        <!-- Quest 2 -->
+        <div class="relative p-8 rounded-2xl bg-[#12141C] border border-[#8B1717]/60 shadow-blood-glow">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-[#FF8585] block mb-1">Machine Cognition</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">QUEST 2: THE PATH OF INTELLIGENCE</h3>
+          <p class="font-cinzel text-xs text-[#FF8585] italic mb-6">"Summoning the dragonfire of machine cognition"</p>
+          <ul class="space-y-2 text-xs text-zinc-300">
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Exploring Artificial Intelligence</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Understanding AI concepts</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Learning modern technologies</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800 text-[#E5C378]">👑 Becoming an AI Developer</li>
+          </ul>
+        </div>
+
+        <!-- Quest 3 -->
+        <div class="relative p-8 rounded-2xl bg-[#12141C] border border-zinc-800">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block mb-1">Visual Production</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mb-2">QUEST 3: THE ART OF EDITING</h3>
+          <p class="font-cinzel text-xs text-[#8FC9E8] italic mb-6">"Directing light, shadow, and narrative"</p>
+          <ul class="space-y-2 text-xs text-zinc-300">
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Learning professional video editing</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Practicing cinematic storytelling</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ Exploring color grading &amp; transitions</li>
+            <li class="p-2 rounded bg-[#161922] border border-zinc-800">✓ DaVinci Resolve workflows</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. CONTACT SECTION ("YOUR RAVEN HAS ARRIVED")
+       ========================================================================= -->
+  <section id="contact" class="relative py-28 bg-[#090A0E] overflow-hidden">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#C6A15B]/30 bg-[#15171C] text-[#C6A15B] text-xs font-cinzel tracking-[0.3em] uppercase mb-3">Royal Messenger</div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold tracking-[0.18em] text-white">YOUR RAVEN HAS ARRIVED</h2>
+        <div class="w-28 h-0.5 mx-auto mt-4 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="mt-3 text-zinc-400 font-cinzel text-xs tracking-[0.25em] uppercase">Dispatch a scroll to Shubham Sharma across the digital realm</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        
+        <!-- Direct Contacts -->
+        <div class="lg:col-span-2 p-8 rounded-2xl bg-[#12141C] border border-zinc-800 space-y-6">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+
+          <div class="text-center">
+            <h3 class="font-cinzel text-2xl font-bold text-white tracking-wider">SHUBHAM SHARMA</h3>
+            <p class="font-mono text-xs text-[#E5C378] mt-1">Aspiring AI &amp; Software Developer</p>
+            <p class="font-sans text-xs text-zinc-400 mt-2">JECRC University • B.Tech CSE Core</p>
+          </div>
+
+          <div class="space-y-3 pt-4 border-t border-zinc-800">
+            <!-- Email -->
+            <div class="p-3.5 rounded-xl bg-[#161922] border border-zinc-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-cinzel text-[10px] text-zinc-400 uppercase tracking-wider">Direct Email</span>
+                <button onclick="copyEmail()" class="text-[10px] text-[#C6A15B] hover:text-[#E5C378] font-mono">
+                  <span id="copyEmailLabel">Copy</span>
+                </button>
+              </div>
+              <a href="mailto:shubhamsharma572007@gmail.com" class="font-mono text-xs text-white hover:text-[#E5C378] break-all block">
+                shubhamsharma572007@gmail.com
+              </a>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="p-3.5 rounded-xl bg-[#161922] border border-zinc-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-cinzel text-[10px] text-zinc-400 uppercase tracking-wider">Professional Realm</span>
+                <span class="text-[#8FC9E8] text-xs">LinkedIn</span>
+              </div>
+              <a href="https://www.linkedin.com/in/shubham-sharma-759515437/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-[#8FC9E8] hover:underline block">
+                linkedin.com/in/shubham-sharma-759515437
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-3 relative p-8 sm:p-10 rounded-2xl bg-[#12141A] parchment-border">
+          <div class="gilded-corner-tl"></div>
+          <div class="gilded-corner-tr"></div>
+          <div class="gilded-corner-bl"></div>
+          <div class="gilded-corner-br"></div>
+
+          <h3 class="font-cinzel text-2xl font-bold text-white mb-2">DISPATCH A SCROLL</h3>
+          <p class="text-xs text-zinc-400 font-sans mb-8">Send an inquiry regarding software development, AI projects, or video editing.</p>
+
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Your Name / Title *</label>
+                <input id="contactName" type="text" placeholder="e.g. Hiring Lead" class="w-full px-4 py-3 rounded-lg bg-[#181B26] border border-zinc-700 text-sm text-white focus:border-[#C6A15B] focus:outline-none" />
+                <p id="errorName" class="text-[11px] text-red-400 mt-1 hidden">Please provide your name.</p>
+              </div>
+              <div>
+                <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Your Email Address *</label>
+                <input id="contactEmail" type="email" placeholder="your.email@example.com" class="w-full px-4 py-3 rounded-lg bg-[#181B26] border border-zinc-700 text-sm text-white focus:border-[#C6A15B] focus:outline-none" />
+                <p id="errorEmail" class="text-[11px] text-red-400 mt-1 hidden">Please enter a valid email.</p>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Raven Subject *</label>
+              <input id="contactSubject" type="text" placeholder="e.g. Technical Collaboration / Internship" class="w-full px-4 py-3 rounded-lg bg-[#181B26] border border-zinc-700 text-sm text-white focus:border-[#C6A15B] focus:outline-none" />
+              <p id="errorSubject" class="text-[11px] text-red-400 mt-1 hidden">Please specify a subject.</p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">The Message Scroll *</label>
+              <textarea id="contactMessage" rows="4" placeholder="Inscribe your thoughts, ideas, or proposal here..." class="w-full px-4 py-3 rounded-lg bg-[#181B26] border border-zinc-700 text-sm text-white focus:border-[#C6A15B] focus:outline-none"></textarea>
+              <p id="errorMessage" class="text-[11px] text-red-400 mt-1 hidden">Please write at least 10 characters.</p>
+            </div>
+
+            <button type="submit" class="w-full py-4 px-8 rounded-lg bg-gradient-to-r from-[#947233] via-[#C6A15B] to-[#947233] text-black font-cinzel font-bold text-xs uppercase tracking-[0.25em] shadow-gold-glow hover:brightness-110 valyrian-sheen">
+              SEND MESSAGE RAVEN
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Closing Message -->
+      <div class="mt-16 text-center">
+        <div class="h-0.5 w-32 mx-auto mb-6 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+        <p class="font-cinzel text-base sm:text-xl font-bold tracking-[0.2em] text-[#E5C378] uppercase">
+          "EVERY GREAT JOURNEY BEGINS WITH A SINGLE STEP. MINE IS JUST BEGINNING."
+        </p>
+        <div class="h-0.5 w-32 mx-auto mt-6 bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. FOOTER
+       ========================================================================= -->
+  <footer class="relative bg-[#060709] border-t border-zinc-900 pt-16 pb-12 overflow-hidden">
+    <div class="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#C6A15B] to-transparent shadow-gold-glow animate-pulse"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-zinc-900">
+        <div class="text-center md:text-left">
+          <span class="font-cinzel text-xl font-black text-white tracking-[0.18em]">SHUBHAM SHARMA</span>
+          <p class="font-cinzel text-xs text-[#E5C378] tracking-[0.2em] uppercase max-w-md mt-1">
+            "THE MIND OF A DEVELOPER. THE EYE OF AN EDITOR. THE STRATEGY OF A CHESS PLAYER."
+          </p>
+          <p class="text-[11px] text-zinc-500 font-mono mt-1">B.Tech CSE Core • JECRC University • Jaipur, India</p>
+        </div>
+        <button onclick="handleNavClick('home')" class="px-4 py-2.5 rounded-lg bg-[#15171C] border border-[#C6A15B]/40 hover:border-[#C6A15B] text-zinc-200 font-cinzel text-xs tracking-wider shadow-gold-glow">
+          RETURN TO TOP ↑
+        </button>
+      </div>
+
+      <div class="text-center pt-6 text-xs font-mono text-zinc-600">
+        <p>© 2026 Shubham Sharma. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS: DISPATCH & FORGE
+       ========================================================================= -->
+  <!-- Dispatch Modal -->
+  <div id="dispatchModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div class="relative w-full max-w-lg p-6 sm:p-8 rounded-2xl bg-[#14161E] border border-[#C6A15B] shadow-gold-glow text-left">
+      <div class="gilded-corner-tl"></div>
+      <div class="gilded-corner-tr"></div>
+      <div class="gilded-corner-bl"></div>
+      <div class="gilded-corner-br"></div>
+      <h4 class="font-cinzel text-lg font-bold text-white mb-2">DISPATCH PREPARED</h4>
+      <p class="text-xs text-zinc-300 mb-4">Your message has been validated and formatted. Click below to launch your email client with your message pre-filled to Shubham Sharma.</p>
+      <div id="dispatchModalInfo" class="p-3 rounded-lg bg-[#0D0E14] border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1 mb-6"></div>
+      <div class="flex items-center gap-3">
+        <button id="launchMailBtn" class="flex-1 py-3 px-5 rounded-lg bg-[#C6A15B] text-black font-cinzel font-bold text-xs uppercase tracking-wider">Launch Mail Client</button>
+        <button onclick="closeDispatchModal()" class="px-5 py-3 rounded-lg bg-[#181B24] border border-zinc-700 text-xs text-zinc-300 font-cinzel">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forge Modal -->
+  <div id="forgeModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div class="relative w-full max-w-lg p-6 sm:p-8 rounded-2xl bg-[#14161E] border border-[#C6A15B] shadow-gold-glow text-left">
+      <div class="gilded-corner-tl"></div>
+      <div class="gilded-corner-tr"></div>
+      <div class="gilded-corner-bl"></div>
+      <div class="gilded-corner-br"></div>
+      <h3 class="font-cinzel text-xl font-bold text-white mb-2">FORGE A NEW CREATION</h3>
+      <p class="text-xs text-zinc-400 mb-4 font-sans">Add a new software project or video editing creation to your kingdom.</p>
+      <form id="forgeForm" onsubmit="handleForgeSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Project Title</label>
+          <input id="forgeTitle" type="text" required placeholder="e.g. AI Vision Engine" class="w-full px-3 py-2 rounded bg-[#0D0E13] border border-zinc-700 text-sm text-white focus:outline-none focus:border-[#C6A15B]" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Category</label>
+          <select id="forgeCategory" class="w-full px-3 py-2 rounded bg-[#0D0E13] border border-zinc-700 text-sm text-white focus:outline-none focus:border-[#C6A15B]">
+            <option value="AI & Software">AI &amp; Software Development</option>
+            <option value="Software Development">Software Development</option>
+            <option value="Cinematic Video Editing">Cinematic Video Editing</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Description</label>
+          <textarea id="forgeDesc" rows="3" placeholder="Brief summary of what this project explores..." class="w-full px-3 py-2 rounded bg-[#0D0E13] border border-zinc-700 text-sm text-white focus:outline-none focus:border-[#C6A15B]"></textarea>
+        </div>
+        <div>
+          <label class="block text-[11px] font-cinzel uppercase text-zinc-300 mb-1">Technologies</label>
+          <input id="forgeTech" type="text" placeholder="e.g. Python, DaVinci Resolve, Web" class="w-full px-3 py-2 rounded bg-[#0D0E13] border border-zinc-700 text-sm text-white focus:outline-none focus:border-[#C6A15B]" />
+        </div>
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+          <button type="button" onclick="closeForgeModal()" class="px-4 py-2 rounded bg-zinc-800 text-zinc-300 text-xs font-cinzel">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-[#C6A15B] text-black font-cinzel font-bold text-xs shadow-gold-glow">Forge Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="script.js"></script>
+</body>
+</html>

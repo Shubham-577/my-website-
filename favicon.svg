@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Medieval Shield Background -->
+  <path d="M32 4L54 12V32C54 45 44 56 32 60C20 56 10 45 10 32V12L32 4Z" fill="#15171C" stroke="#C6A15B" stroke-width="2.5" />
+  <!-- Inner Rim -->
+  <path d="M32 8L49 14.5V31C49 42 41 51.5 32 55C23 51.5 15 42 15 31V14.5L32 8Z" stroke="#8B1717" stroke-width="1.2" fill="#08090C" />
+  <!-- Monogram SS in Gold -->
+  <text x="32" y="38" font-family="'Cinzel', serif" font-weight="900" font-size="22" fill="#C6A15B" text-anchor="middle" letter-spacing="-1">SS</text>
+  <!-- Crown / Dragon wings top crest -->
+  <path d="M22 18L32 13L42 18L37 20L32 17L27 20L22 18Z" fill="#C6A15B" />
+  <!-- Bottom Valyrian gem -->
+  <circle cx="32" cy="46" r="2.5" fill="#8B1717" stroke="#C6A15B" stroke-width="0.8" />
+</svg>
